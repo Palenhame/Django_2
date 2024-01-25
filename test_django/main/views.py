@@ -1,7 +1,15 @@
 from django.shortcuts import render
+from .form import TestForm
 
 
 # Create your views here.
 
 def main(request):
-    return render(request, 'main.html')
+    if request.method == 'POST':
+        form = TestForm(request.POST)
+        if form.is_valid():
+            form.save()
+
+    else:
+        form = TestForm()
+    return render(request, 'main.html', {'form': form})
