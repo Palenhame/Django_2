@@ -12,4 +12,4 @@ def main(request):
 
     else:
         form = TestForm()
-    return render(request, 'main.html', {'form': form})
+    return render(request, 'index.html', {'form': form})
