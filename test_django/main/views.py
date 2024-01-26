@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Test
 from .form import TestForm
 
@@ -7,10 +7,10 @@ from .form import TestForm
 
 def main(request):
     if request.method == 'POST':
-        data = Test.objects.values_list('pk')
         form = TestForm(request.POST)
         if form.is_valid():
-            form.save()
+            data = form.save()
+            return redirect('main:other', page=data.pk)
 
     else:
         form = TestForm()
