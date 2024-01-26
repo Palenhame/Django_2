@@ -6,6 +6,15 @@ from .form import TestForm
 # Create your views here.
 
 def main(request):
+    return render(request, 'main.html')
+
+
+def other(request, page):
+    data = Test.objects.get(pk=page)
+    return render(request, 'other.html', {'data': data})
+
+
+def form(request):
     if request.method == 'POST':
         form = TestForm(request.POST)
         if form.is_valid():
@@ -15,10 +24,5 @@ def main(request):
     else:
         form = TestForm()
         data = None
-    return render(request, 'index.html',
+    return render(request, 'form.html',
                   {'form': form, 'data': data})
-
-
-def other(request, page):
-    data = Test.objects.get(pk=page)
-    return render(request, 'other.html', {'data': data})
