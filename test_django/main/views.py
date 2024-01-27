@@ -29,3 +29,9 @@ def form(request):
         data = None
     return render(request, 'form.html',
                   {'form': form, 'data': data})
+
+
+def news(request):
+    data = NewsModel.objects.all()
+    print(data)
+    return render(request, 'news.html', {'data': data})

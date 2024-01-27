@@ -3,8 +3,11 @@
 {% load static %}
 
 {% block content %}
+<p class="h1 text-center">{{ data.title }}</p>
 {% if data.img %}
-{{ data.img }}
-<img src="{{ data.img }}">
+<img src="{{ data.img }}" class="rounded mx-auto d-block">
+<p class="fs-2 text-center">{{ data.type }}</p>
+<p class="text-center">{{ data.text_news }}</p>
+<p class="fs-4 text-center">{{ data.date }}</p>
 {% endif %}
 {% endblock %}
