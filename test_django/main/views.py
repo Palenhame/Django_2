@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Test
+from .models import NewsModel
 from .form import TestForm
 
 
@@ -10,14 +10,17 @@ def main(request):
 
 
 def other(request, page):
-    data = Test.objects.get(pk=page)
+    data = NewsModel.objects.get(pk=page)
     return render(request, 'other.html', {'data': data})
 
 
 def form(request):
+    global data
     if request.method == 'POST':
-        form = TestForm(request.POST)
+        form = TestForm(request.POST, request.FILES)
+        print('all good')
         if form.is_valid():
+            print('all good')
             data = form.save()
             return redirect('main:other', page=data.pk)
 

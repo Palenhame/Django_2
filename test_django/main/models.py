@@ -1,17 +1,32 @@
 from django.db import models
-
+from datetime import datetime
 
 # Create your models here.
-class Test(models.Model):
-    name = models.CharField(max_length=255, verbose_name='Name')
-    description = models.TextField(verbose_name='Description')
+TYPES = (
+    ('python', 'Python'),
+    ('django', 'Django'),
+    ('backend', 'Backend'),
+    ('frontend', 'Frontend'),
+)
+
+
+class NewsModel(models.Model):
+    title = models.CharField(max_length=255, verbose_name='Title')
+    img = models.ImageField(blank=False, null=False,
+                            upload_to='static/images_from_user/%Y/%m/%d/')
+    type = models.CharField(max_length=20, choices=TYPES,
+                            default='python',
+                            verbose_name='Type of news')
+    text_news = models.TextField(verbose_name='Text news')
+    date = models.DateTimeField(default=datetime.now(), verbose_name="Date")
 
     def __repr__(self):
-        return self.name
+        return self.title
 
     def __str__(self):
-        return self.name
+        return self.title
 
     class Meta:
-        verbose_name = 'Test'
-
+        verbose_name = 'News'
+        verbose_name_plural = 'News'
+        ordering = ['-date', 'title']
