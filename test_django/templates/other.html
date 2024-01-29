@@ -7,7 +7,9 @@
 {% if data.img %}
 <img src="{{ data.img }}" class="rounded mx-auto d-block">
 <p class="fs-2 text-center">{{ data.type }}</p>
-<p class="text-center">{{ data.text_news }}</p>
+<div class="text-center">
+<p class="text-center">{{ data.text_news|linebreaks }}</p>
+</div>
 <p class="fs-4 text-center">{{ data.date }}</p>
 <div class="text-center">
 <a class="btn btn-primary" href="{% url 'main:news' %}">Назад</a>
