@@ -1,5 +1,6 @@
 from django.db import models
 from datetime import datetime
+from django.contrib.auth.models import User
 
 # Create your models here.
 TYPES = (
@@ -11,6 +12,7 @@ TYPES = (
 
 
 class NewsModel(models.Model):
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=255, verbose_name='Title')
     img = models.ImageField(blank=False, null=False,
                             upload_to='static/images_from_user/%Y/%m/%d/')
