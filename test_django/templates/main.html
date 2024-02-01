@@ -29,11 +29,27 @@
         <li class="nav-item active">
         <a class="nav-link" href="{% url 'main:news' %}">News</a>
       </li>
-      </li>
         <li class="nav-item active">
         <a class="nav-link" href="{% url 'main:form' %}">Create news</a>
       </li>
     </ul>
+      {% if user.is_authenticated %}
+         <ul class="nav justify-content-end position-absolute top-0 end-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">{{ user.username }}</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{% url 'user:logout' %}">Выйти</a>
+            </li>
+         </ul>
+      {% else %}
+         <ul class="nav justify-content-end position-absolute top-0 end-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{% url 'user:login' %}">Войти</a>
+            </li>
+         </ul>
+      {% endif %}
+
 </nav>
 <div class="p-3 mb-2 bg-secondary text-white">
 {% block content %}

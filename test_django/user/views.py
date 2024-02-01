@@ -1,3 +1,6 @@
+from django.contrib.auth import logout
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.views import LoginView
 from django.shortcuts import render, redirect
 from .forms import UserRegisterForm
 from django.contrib import messages
@@ -17,11 +20,13 @@ def register(request):
     return render(request, 'form1.html', {'form': form})
 
 
-def logout(request):
+def user_logout(request):
     logout(request)
-    redirect('login')
+    return redirect('user:login')
 
 
-def login(request):
-    pass
+class LoginUser(LoginView):
+    form_class = AuthenticationForm
+    template_name = 'form1.html'
+    extra_context = {'title': 'djdj'}
 

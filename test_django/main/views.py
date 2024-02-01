@@ -1,4 +1,7 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
+from django.views.generic import CreateView
+
 from .models import NewsModel
 from .form import TestForm
 
@@ -14,6 +17,7 @@ def other(request, page):
     return render(request, 'other.html', {'data': data})
 
 
+@login_required
 def form(request):
     global data
     if request.method == 'POST':
