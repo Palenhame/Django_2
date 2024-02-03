@@ -23,8 +23,12 @@ def form(request):
         form = TestForm(request.POST, request.FILES)
         print('all good')
         if form.is_valid():
-            print('all good')
+            print(request.user)
+            print(type(request.user))
+            data = form.save(commit=False)
+            data.author = request.user
             data = form.save()
+            print('all good')
             return redirect('main:other', page=data.pk)
 
     else:

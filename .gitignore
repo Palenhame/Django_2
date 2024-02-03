@@ -21,6 +21,7 @@ sdist/
 var/
 wheels/
 share/python-wheels/
+test_django/static/images_from_user
 *.egg-info/
 .installed.cfg
 *.egg
@@ -150,3 +151,4 @@ cython_debug/
 #  and can be added to the global gitignore or merged into this file.  For a more nuclear
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
+/test_django/static/images_from_user/

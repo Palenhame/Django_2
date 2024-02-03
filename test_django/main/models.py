@@ -14,7 +14,7 @@ TYPES = (
 class NewsModel(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=255, verbose_name='Title')
-    img = models.ImageField(blank=False, null=False,
+    img = models.ImageField(null=True, blank=True,
                             upload_to='static/images_from_user/%Y/%m/%d/')
     type = models.CharField(max_length=20, choices=TYPES,
                             default='python',
