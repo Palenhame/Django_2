@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'main.apps.MainConfig',
     'django_bootstrap5',
-    'users.apps.UserConfig',
+    'user.apps.UserConfig',
 ]
 
 MIDDLEWARE = [
@@ -130,7 +130,7 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_URL = 'users/login/'
-LOGOUT_URL = 'users/logout/'
+LOGIN_URL = 'user/login/'
+LOGOUT_URL = 'user/logout/'
 
 LOGIN_REDIRECT_URL = '/news'
