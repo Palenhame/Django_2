@@ -1,6 +1,8 @@
 from django.contrib.auth import logout, get_user_model
 from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.models import User
 from django.contrib.auth.views import LoginView
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from .forms import UserRegisterForm
 from django.contrib import messages
@@ -33,5 +35,8 @@ class LoginUser(LoginView):
 
 # TODO ДОДЕЛАТЬ ПОКАЗАНИЕ СТАТЕЙ ПОЛЬЗОВАТЕЛЯ
 def account(request):
-    data = get_user_model()
-    return render(request, 'account.html')
+    data = User.objects.get(username=request.user)
+    print(data)
+    print(data)
+    #     # return render(request, 'account.html')
+    return HttpResponse(data)
