@@ -1,13 +1,15 @@
 from django.contrib import admin
 from django.urls import path, include
 from .views import main, other, form, news, account
+from django.conf import settings
+from django.conf.urls.static import static
 
 app_name = 'main'
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', main, name='main'),
+    path('', news, name='news'),
     path('form', form, name='form'),
-    path('news', news, name='news'),
+    # path('news', news, name='news'),
     path('<int:page>', other, name='other'),
-    path('user/account', account, name='account')
-]
+    path('account', account, name='account')
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -45,5 +45,6 @@ def news(request):
 
 
 def account(request):
-    data = NewsModel.objects.filter(author=request.user)
+    # data = NewsModel.objects.filter(author=request.user)
+    data = NewsModel.objects.all()
     return render(request, 'account.html', {'data': data})
