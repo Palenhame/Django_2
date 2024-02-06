@@ -42,3 +42,8 @@ def news(request):
     data = NewsModel.objects.all()
     print(data)
     return render(request, 'news.html', {'data': data})
+
+
+def account(request):
+    data = NewsModel.objects.filter(author=request.user)
+    return render(request, 'account.html', {'data': data})

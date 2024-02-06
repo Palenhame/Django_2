@@ -4,10 +4,9 @@
 
 
 {% block content %}
-<div class="position-absolute end-50">
-    <h1>{{ user.username }}</h1>
+    <h1>{{ data }}</h1>
     <h3>Ваши статьи</h3>
-    {% for i in articles %}
+    {% for i in data %}
     <p class="h1 text-center">{{ i.title }}</p>
     {% if i.img %}
         <img src="{{ i.img }}" class="rounded mx-auto d-block">
@@ -18,5 +17,4 @@
     <a class="btn btn-primary" href="{% url 'main:other' i.pk %}">Читать дальше</a>
     </div>
     {% endfor %}
-</div>
 {% endblock %}
