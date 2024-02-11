@@ -40,6 +40,6 @@ def account(request):
     # User = UserManager()
     data = User.objects.get(username=request.user)
     print(data)
-    print(data.objects.all())
+    print(data.news.all())
     #     # return render(request, 'account.html')
-    return HttpResponse(data)
+    return render(request, 'account.html', context={'data': data.news.all()})
