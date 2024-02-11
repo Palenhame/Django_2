@@ -5,7 +5,7 @@
 {% block content %}
 <p class="h1 text-center">{{ data.title }}</p>
 {% if data.img %}
-<img src="{{ data.img }}" class="rounded mx-auto d-block">
+<img src="{{ data.img.url }}" class="rounded mx-auto d-block">
 <p class="fs-2 text-center">{{ data.type }}</p>
 <div class="text-center">
 <p class="text-center">{{ data.text_news|linebreaks }}</p>
