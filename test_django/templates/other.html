@@ -15,4 +15,9 @@
 <a class="btn btn-primary" href="{% url 'main:news' %}">Назад</a>
 </div>
 {% endif %}
+{% if data_comment.text %}
+<p>{{ data_comment.text }}</p>
+{% else %}
+<p>Комментарием нет</p>
+{% endif %}
 {% endblock %}

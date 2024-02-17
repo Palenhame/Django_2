@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.views.generic import CreateView
-from .models import NewsModel
+from .models import NewsModel, CommentModel
 from .form import TestForm
 
 
@@ -13,7 +13,11 @@ def main(request):
 
 def other(request, page):
     data = NewsModel.objects.get(pk=page)
-    return render(request, 'other.html', {'data': data})
+    try:
+        data_comment = CommentModel.objects.get(pk=page)
+    except:
+        data_comment = None
+    return render(request, 'other.html', {'data': data, 'data_comment': data_comment})
 
 
 @login_required
