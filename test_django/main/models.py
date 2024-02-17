@@ -32,3 +32,9 @@ class NewsModel(models.Model):
         verbose_name = 'News'
         verbose_name_plural = 'News'
         ordering = ['-date', 'title']
+
+
+class CommentModel(models.Model):
+    article = models.ForeignKey(NewsModel, on_delete=models.CASCADE, related_name='comments')
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='author_comment')
+    text = models.TextField()
