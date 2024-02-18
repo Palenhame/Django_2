@@ -30,6 +30,9 @@
         <li class="nav-item active">
         <a class="nav-link" href="{% url 'main:form' %}">Create news</a>
       </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'main:voting' %}">Voting</a>
+      </li>
     </ul>
       {% if user.is_authenticated %}
          <ul class="navbar-nav position-absolute top-0 end-0">
