@@ -20,7 +20,7 @@ class NewsModel(models.Model):
                             default='python',
                             verbose_name='Type of news')
     text_news = models.TextField(verbose_name='Text news')
-    date = models.DateTimeField(default=datetime.now(), verbose_name="Date")
+    date = models.DateTimeField(default=datetime.now, verbose_name="Date")
 
     def __repr__(self):
         return self.title
@@ -37,7 +37,8 @@ class NewsModel(models.Model):
 class CommentModel(models.Model):
     article = models.ForeignKey(NewsModel, on_delete=models.CASCADE, related_name='comments')
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='author_comment')
-    text = models.TextField()
+    text = models.TextField(verbose_name='Text comment')
+    date = models.DateTimeField(default=datetime.now, verbose_name="Date")
 
     def __str__(self):
-        return 'Comment {} by {}'.format(self.text, self.author)
+        return 'Comment "{}" by "{}"'.format(self.text, self.author)

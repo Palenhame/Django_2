@@ -1,8 +1,8 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import CreateView
 from .models import NewsModel, CommentModel
-from .form import TestForm
+from .form import TestForm, CommentForm
 
 
 # Create your views here.
@@ -12,12 +12,26 @@ def main(request):
 
 
 def other(request, page):
-    data = NewsModel.objects.get(pk=page)
+    data = get_object_or_404(NewsModel, pk=page)
     try:
-        data_comment = CommentModel.objects.get(pk=page)
+        data_comment = CommentModel.objects.all().filter(article=data)
     except:
         data_comment = None
-    return render(request, 'other.html', {'data': data, 'data_comment': data_comment})
+    if request.method == 'POST':
+        form = CommentForm(request.POST, request.FILES)
+        print('all good')
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.author = request.user
+            comment.article = data
+            print('comment')
+            comment.save()
+            form = CommentForm()
+            return render(request, 'other.html', {'data': data, 'data_comment': data_comment, 'form': form})
+    else:
+        form = CommentForm()
+        print(data_comment)
+    return render(request, 'other.html', {'data': data, 'data_comment': data_comment, 'form': form})
 
 
 @login_required
