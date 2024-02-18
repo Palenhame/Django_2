@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import CreateView
 from .models import NewsModel, CommentModel
@@ -59,3 +60,8 @@ def form(request):
 def news(request):
     data = NewsModel.objects.all()
     return render(request, 'news.html', {'data': data})
+
+
+@login_required
+def voting(request):
+    return HttpResponse('All good')
