@@ -8,7 +8,7 @@
 {% for i in data %}
 <p class="h1 text-center">{{ i.title }}</p>
     {% if i.img %}
-        <img src="{{ i.img }}" class="rounded mx-auto d-block">
+        <img src="{{ i.img.url }}" class="rounded mx-auto d-block">
     {% endif %}
 <p class="fs-2 text-center">{{ i.type }}</p>
 <p class="fs-4 text-center">{{ i.date }}</p>

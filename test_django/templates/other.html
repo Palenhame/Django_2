@@ -5,7 +5,7 @@
 {% block content %}
 <p class="h1 text-center">{{ data.title }}</p>
 {% if data.img %}
-<img src="{{ data.img }}" class="rounded mx-auto d-block">
+<img src="{{ data.img.url }}" class="rounded mx-auto d-block">
 <p class="fs-2 text-center">{{ data.type }}</p>
 <div class="text-center">
 <p class="text-center">{{ data.text_news|linebreaks }}</p>
@@ -14,5 +14,21 @@
 <div class="text-center">
 <a class="btn btn-primary" href="{% url 'main:news' %}">Назад</a>
 </div>
+{% endif %}
+<form enctype="multipart/form-data" method="post" class="form">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    <button type="submit" class="btn btn-primary  btn-lg">Submit</button>
+</form>
+{% if data_comment %}
+{% for i in data_comment %}
+<div class="alert alert-success" role="alert">
+<p>Автор: {{ i.author }}</p>
+<p>Дата создания: {{ i.date }}</p>
+<p>{{ i.text }}</p>
+</div>
+{% endfor %}
+{% else %}
+<p>Комментарием нет</p>
 {% endif %}
 {% endblock %}

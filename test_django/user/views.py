@@ -6,7 +6,8 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from .forms import UserRegisterForm
 from django.contrib import messages
-from .models import Profile
+# from .models import Profile
+# from django.contrib.auth.models import UserManager
 
 
 # Create your views here.
@@ -17,7 +18,7 @@ def register(request):
             form.save()
             username = form.cleaned_data.get('username')
             messages.success(request, f'Ваш аккаунт создан: можно войти на сайт.')
-            return redirect('main:main')
+            return redirect('main:news')
     else:
         form = UserRegisterForm()
     return render(request, 'form1.html', {'form': form})
@@ -35,9 +36,8 @@ class LoginUser(LoginView):
 
 
 # TODO ДОДЕЛАТЬ ПОКАЗАНИЕ СТАТЕЙ ПОЛЬЗОВАТЕЛЯ
-# def account(request):
-#     data = User.objects.filter(username=request.user).select_related('profile')
-#     print(data)
-#     print(data[0].title_set)
-#     #     # return render(request, 'account.html')
-#     return HttpResponse(data)
+def account(request):
+    # User = UserManager()
+    data = User.objects.get(username=request.user)
+    #     # return render(request, 'account.html')
+    return render(request, 'account.html', context={'data': data.news.all()})
