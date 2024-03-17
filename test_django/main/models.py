@@ -40,5 +40,8 @@ class CommentModel(models.Model):
     text = models.TextField(verbose_name='Text comment')
     date = models.DateTimeField(default=datetime.now, verbose_name="Date")
 
+    class Meta:
+        ordering = ['-date']
+
     def __str__(self):
         return 'Comment "{}" by "{}"'.format(self.text, self.author)
