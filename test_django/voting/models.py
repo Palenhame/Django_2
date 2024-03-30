@@ -12,6 +12,3 @@ class VotingModel(models.Model):
     value2_votes = models.IntegerField()
     value3_votes = models.IntegerField()
     value4_votes = models.IntegerField()
-
-    class Meta:
-        db_table = 'voting'
