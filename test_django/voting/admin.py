@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from test_django.voting.models import VotingModel
+from voting.models import VotingModel
 
 
 @admin.register(VotingModel)
