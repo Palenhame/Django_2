@@ -1,0 +1,13 @@
+{% extends 'main.html' %}
+{% load django_bootstrap5 %}
+{% load static %}
+
+{% block content %}
+    {% for val in voting %}
+        <form enctype="multipart/form-data" method="post" class="form">
+            {% csrf_token %}
+        {% bootstrap_form form %}
+        <button type="submit" class="btn btn-primary">Ok</button>
+        </form>
+    {% endfor %}
+{% endblock %}

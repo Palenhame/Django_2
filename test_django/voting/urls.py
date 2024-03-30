@@ -4,5 +4,5 @@ from voting import views
 
 app_name = 'voting'
 urlpatterns = [
-    path('voting/', views.voting, name='voting')
+    path('', views.voting, name='voting')
 ]
