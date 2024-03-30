@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'main.apps.MainConfig',
     'django_bootstrap5',
     'user.apps.UserConfig',
+    "voting.apps.VotingConfig"
 ]
 
 MIDDLEWARE = [
