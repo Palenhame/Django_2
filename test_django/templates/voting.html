@@ -6,8 +6,37 @@
     {% for val in voting %}
         <form enctype="multipart/form-data" method="post" class="form">
             {% csrf_token %}
-        {% bootstrap_form form %}
-        <button type="submit" class="btn btn-primary">Ok</button>
+            <h2>{{ val.text }}</h2>
+        
+            <div class="form-check">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+            <label class="form-check-label" for="exampleRadios1">
+            {{ val.value1 }}
+            </label>
+            </div>
+            
+            <div class="form-check">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+            <label class="form-check-label" for="exampleRadios1">
+            {{ val.value2 }}
+            </label>
+            </div>
+            
+            <div class="form-check">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+            <label class="form-check-label" for="exampleRadios1">
+            {{ val.value3 }}
+            </label>
+            </div>
+            
+            <div class="form-check">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+            <label class="form-check-label" for="exampleRadios1">
+            {{ val.value4 }}
+            </label>
+            </div>
+        
+            <button type="submit" class="btn btn-primary">Ok</button>
         </form>
     {% endfor %}
 {% endblock %}

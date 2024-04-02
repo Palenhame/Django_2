@@ -14,11 +14,11 @@ def main(request):
 
 def other(request, page):
     data = get_object_or_404(NewsModel, pk=page)
-    try:
-        data_comment = CommentModel.objects.all().filter(article=data)
-    except:
-        data_comment = None
+    data_comment = CommentModel.objects.all().filter(article=data)
+
     if request.method == 'POST':
+        print(request.POST)
+        print(request.POST['text'])
         form = CommentForm(request.POST, request.FILES)
         print('all good')
         if form.is_valid():

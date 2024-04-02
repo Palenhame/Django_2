@@ -1,8 +1,8 @@
 from django.contrib import admin
-
-from voting.models import VotingModel
+import psycopg2
+from .models import VotingModel
 
 
 @admin.register(VotingModel)
 class VotingModelAdmin(admin.ModelAdmin):
-    pass
+    pass 

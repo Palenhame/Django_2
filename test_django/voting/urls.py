@@ -1,8 +1,8 @@
 from django.urls import path
 
-from voting import views
+from . import views
 
 app_name = 'voting'
 urlpatterns = [
-    path('', views.voting, name='voting')
+    path('<int:voting_id>', views.voting, name='voting')
 ]

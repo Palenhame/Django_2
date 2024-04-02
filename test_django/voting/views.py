@@ -1,10 +1,21 @@
 from django.shortcuts import render, redirect
 from .form import VotingForm
-from voting.models import VotingModel
+from .models import VotingModel
 
 
 # Create your views here.
-def voting(request):
+def voting(request, voting_id):
+    votings = VotingModel.objects.all()
+    if request.method == 'POST':
+        print(request.POST)
+        voting = votings.filter(pk=voting_id)
+        voting.update({request.POST['exampleRadios']: 1})
+    else:
+        print('get')
+    return render(request, 'voting.html', {'voting': votings})
+
+
+def create_voting(request):
     votings = VotingModel.objects.all()
     if request.method == 'POST':
         form = VotingForm(request.POST)
@@ -13,4 +24,4 @@ def voting(request):
             return redirect('main:form')
     else:
         form = VotingForm()
-    return render(request, 'voting.html', {'voting': votings, 'form': form})
+    return render(request, 'create_voting.html', {'voting': votings, 'form': form})

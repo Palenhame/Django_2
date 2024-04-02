@@ -31,7 +31,7 @@
             <a class="nav-link" href="{% url 'main:form' %}">Create news</a>
         </li>
         <li class="nav-item active">
-            <a class="nav-link" href="{% url 'voting:voting' %}">Voting</a>
+            <a class="nav-link" href="{% url 'voting:voting' voting_id=1 %}">Voting</a>
         </li>
     </ul>
     {% if user.is_authenticated %}
